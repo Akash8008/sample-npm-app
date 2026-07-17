@@ -2,12 +2,14 @@ FROM node:22-alpine
 
 WORKDIR /app
 
+
+
+COPY package.json package-lock.json ./ 
+
+RUN npm install --omit=dev
+
 COPY dist ./dist
-
-COPY package.json .
-
-RUN npm install
 
 EXPOSE 3000
 
-CMD ["npm","start"]
+CMD ["node", "dist/server.js"]
