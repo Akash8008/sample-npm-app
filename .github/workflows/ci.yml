@@ -5,7 +5,7 @@ on:
     branches:
       - master
       - develop
-      - feature/one
+      #- feature/one
   workflow_dispatch:
 
 env:
@@ -47,7 +47,7 @@ jobs:
       
 
   containerize:
-    if: ${{ vars.ENABLE_CONTAINER == true }}
+    #if: ${{ vars.ENABLE_CONTAINER == true }}
     runs-on: ubuntu-latest
     needs: build
 
