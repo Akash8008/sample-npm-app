@@ -23,7 +23,6 @@ jobs:
         uses: actions/setup-node@v4
         with: 
           node-version: ${{vars.node_version}}
-          cache: npm
       
       - name: install dependencies
         run: npm install
@@ -50,7 +49,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{vars.node-version}}
-          cache: npm
       
       - name: install dependencies
         run: npm install
