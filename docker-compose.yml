@@ -1,0 +1,7 @@
+services:
+  my_app:
+    build: .
+    container_name: my_apptestcompose
+    ports:
+      - "8082:3000"
+    restart: unless-stopped
