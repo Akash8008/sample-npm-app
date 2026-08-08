@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: akash-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: akash-app
+
+  template:
+    metadata:
+      labels:
+        app: akash-app
+    
+    spec:
+      containers:
+        - name: akashapp
+          image: akashpendyala/akashdevops1:multistageee
+          ports:
+            - containerPort: 3000
+          #env:
+          #- name: env
+              #valueFrom:
+                #configMapKeyRef:
+                 # name: app-config
+                  #key: APP_ENV
+
+          #   - name: APP_NAME
+          #    valueFrom:
+          #      configMapKeyRef:
+          #        name: app-config
+          #        key: APP_NAME
+
+          volumeMounts:
+            - name: configvolume
+              mountPath: /config
+
+            - name: secretvolume
+              mountPath: /secret
+
+      volumes:
+        - name: configvolume
+          configMap:
+            name: app-config
+
+        - name: secretvolume
+          secret:
+            secretName: my-secret
