@@ -42,6 +42,9 @@ spec:
             - name: secretvolume
               mountPath: /secret
 
+            - name: pvc-storage
+              mountPath: /data
+
       volumes:
         - name: configvolume
           configMap:
@@ -50,3 +53,7 @@ spec:
         - name: secretvolume
           secret:
             secretName: my-secret
+        
+        - name: pvc-storage
+          persistentVolumeClaim:
+            claimName: my-pvc
