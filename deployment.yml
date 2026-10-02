@@ -5,7 +5,13 @@ metadata:
   name: akash-deployment
 
 spec:
-  replicas: 2
+  replicas: 3
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
 
   selector:
     matchLabels:
